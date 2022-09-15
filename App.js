@@ -1,25 +1,17 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
 import React, {useState} from 'react';
-
+import {StyleSheet, Text, View} from 'react-native';
+import Cat from './Cat';
+import StateManagement from './src/screens/StateManagement';
+import CustomComponent from './src/screens/CustomComponent';
+import StateAddition from './src/screens/StateAddition';
 const App = () => {
-  const [name, setName] = useState('Asad');
-  const onClickHandler = () => {
-    setName('Programming With Ali Ahmad');
-  };
   return (
-    <View style={styles.body}>
-      <Text style={styles.text}>{name}</Text>
-
-      <TouchableOpacity style={styles.buttonStyle} onPress={onClickHandler}>
-        <Text>Update state</Text>
-      </TouchableOpacity>
-      <Text>Hello world</Text>
+    <View style={styles.bodyStyling}>
+      <Text>Hello World! This is from App js</Text>
+      <CustomComponent />
+      <StateManagement />
+      <Text>Counter</Text>
+      <StateAddition />
     </View>
   );
 };
@@ -27,28 +19,11 @@ const App = () => {
 export default App;
 
 const styles = StyleSheet.create({
-  body: {
-    //  backgroundColor: '#ffffff',
+  bodyStyling: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-  },
-  text: {
-    //borderRadius: 5,
-    fontSize: 20,
-    //padding: 10,
-    fontStyle: 'bold',
-    //margin: 10,
-  },
-  buttonStyle: {
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    width: '50%',
-    height: '5%',
+    // alignItems: 'center',
+    padding: 10,
+    margin: 10,
   },
 });
