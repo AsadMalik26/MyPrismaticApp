@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 const StateManagement = () => {
   const [name, setName] = useState('Asad');
   const onClickHandler = () => {
-    setName('Programming With Ali Ahmad');
+    setName('Programming With Asad');
   };
   return (
     <>

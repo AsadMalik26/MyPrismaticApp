@@ -1,17 +1,12 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import Cat from './Cat';
-import StateManagement from './src/screens/StateManagement';
-import CustomComponent from './src/screens/CustomComponent';
-import StateAddition from './src/screens/StateAddition';
+import List from './src/screens/List';
+
 const App = () => {
   return (
     <View style={styles.bodyStyling}>
       <Text>Hello World! This is from App js</Text>
-      <CustomComponent />
-      <StateManagement />
-      <Text>Counter</Text>
-      <StateAddition />
+      <List />
     </View>
   );
 };
