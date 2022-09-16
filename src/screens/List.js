@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const List = () => {
   const [items, setItems] = useState([
@@ -19,7 +26,10 @@ const List = () => {
 
   return (
     <View style={styles.itemBody}>
+      <Text>This is List</Text>
+
       <ScrollView
+        style={styles.listView}
         horizontal={false}
         refreshControl={
           <RefreshControl
@@ -66,6 +76,21 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 1,
     textAlign: 'center',
+  },
+  buttonStyle: {
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: '50%',
+    height: 30,
+  },
+  listView: {
+    borderWidth: 1,
+    borderColor: '#B2A4FF',
+    maxHeight: '90%',
   },
 });
 export default List;
