@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import List from './src/screens/List';
+import TheFlatList from './src/screens/TheFlatList';
 
 const App = () => {
   return (
     <View style={styles.bodyStyling}>
       <Text>Hello World! This is from App js</Text>
-      <List />
+      {/* <List /> */}
+      <TheFlatList />
     </View>
   );
 };
