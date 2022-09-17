@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import TheAlerts from './src/screens/TheAlerts';
 import TheInput from './src/screens/TheInput';
 
 import TheSectionList from './src/screens/TheSectionList';
+import TheToasts from './src/screens/TheToasts';
 
 const App = () => {
   return (
     <View style={styles.bodyStyling}>
       <Text>Hello World! This is from App js</Text>
-      {/* text input and keyboard */}
-      <TheInput />
+      {/* <TheAlerts /> */}
+      <TheToasts />
     </View>
   );
 };
