@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   FlatList,
   RefreshControl,
@@ -11,19 +11,6 @@ import {
 } from 'react-native';
 
 const TheSectionList = () => {
-  const [items, setItems] = useState([
-    {value: 'Data Item 1'},
-    {value: 'Data Item 2'},
-    {value: 'Data Item 3'},
-    {value: 'Data Item 4'},
-    {value: 'Data Item 5'},
-    {value: 'Data Item 6'},
-    {value: 'Data Item 7'},
-    {value: 'Data Item 8'},
-    {value: 'Data Item 9'},
-    {value: 'Data Item 10'},
-  ]);
-
   const [DATA, setDATA] = useState([
     {title: 'Title 1', data: ['Item 1-1', 'Item 1-2', 'Item 1-3']},
     {title: 'Title 2', data: ['Item 2-1']},
@@ -31,9 +18,19 @@ const TheSectionList = () => {
 
   const [refresh, setRefresh] = useState(false);
   const [horizontal, setHorizontal] = useState(false);
+  const [max, setMax] = useState(0);
   const horizontalToggel = () => {
     setHorizontal(!horizontal);
+    console.log(max);
   };
+  const newSectionHandler = obj => {
+    console.log('new section called :');
+    console.log(obj);
+  };
+  const updateMax = () => {
+    setMax(DATA.length + max);
+  };
+  useEffect(() => updateMax(), []);
 
   const renderItems = ({item}) => (
     <View style={styles.itemBody}>
@@ -49,10 +46,8 @@ const TheSectionList = () => {
   return (
     <View>
       <Text>This is Section List</Text>
-      <TouchableOpacity style={styles.buttonStyle}>
-        <Text onPress={horizontalToggel}>
-          View in {horizontal ? 'Verticle' : 'Horizental'} Mode
-        </Text>
+      <TouchableOpacity style={styles.buttonStyle} onPress={horizontalToggel}>
+        <Text>View in {horizontal ? 'Verticle' : 'Horizental'} Mode </Text>
       </TouchableOpacity>
 
       {/* here item means the array items */}
@@ -78,6 +73,8 @@ const TheSectionList = () => {
                 {title: 'Title 8', data: ['Item 8-1']},
                 {title: 'Title 9', data: ['Item 9-1']},
               ]);
+              updateMax();
+              newSectionHandler(this);
               setRefresh(false);
             }}
             colors={['#FFDE00']}

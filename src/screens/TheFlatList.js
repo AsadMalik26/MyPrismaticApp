@@ -30,10 +30,8 @@ const TheFlatList = () => {
   return (
     <View>
       <Text>This is FlatList</Text>
-      <TouchableOpacity style={styles.buttonStyle}>
-        <Text onPress={horizontalToggel}>
-          View in {horizontal ? 'Verticle' : 'Horizental'} Mode
-        </Text>
+      <TouchableOpacity style={styles.buttonStyle} onPress={horizontalToggel}>
+        <Text>View in {horizontal ? 'Verticle' : 'Horizental'} Mode</Text>
       </TouchableOpacity>
       {/* renderItem is like map(), it pick one by one item from data */}
 
