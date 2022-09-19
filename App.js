@@ -1,18 +1,32 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import Header from './src/components/Header';
 import TheAlerts from './src/screens/TheAlerts';
 import TheInput from './src/screens/TheInput';
+import TheModels from './src/screens/TheModels';
 
 import TheSectionList from './src/screens/TheSectionList';
 import TheToasts from './src/screens/TheToasts';
 
 const App = () => {
   return (
-    <View style={styles.bodyStyling}>
+    <ImageBackground
+      source={require('./assets/bg_image.jpg')}
+      blurRadius={10}
+      style={[
+        styles.bodyStyling,
+        {backgroundColor: '#00000030', borderRadius: 20},
+      ]}>
+      <Header />
       <Text>Hello World! This is from App js</Text>
-      {/* <TheAlerts /> */}
-      <TheToasts />
-    </View>
+      <TheModels />
+    </ImageBackground>
   );
 };
 
@@ -23,7 +37,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     // alignItems: 'center',
-    padding: 10,
-    margin: 10,
+    // padding: 10,
+    // margin: 10,
+    width: '100%',
+    height: '100%',
   },
 });
