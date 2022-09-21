@@ -1,32 +1,44 @@
 import React, {useState} from 'react';
-import {
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import Header from './src/components/Header';
-import TheAlerts from './src/screens/TheAlerts';
-import TheInput from './src/screens/TheInput';
-import TheModels from './src/screens/TheModels';
-
-import TheSectionList from './src/screens/TheSectionList';
-import TheToasts from './src/screens/TheToasts';
-
+import {StyleSheet, Text, View} from 'react-native';
+import StackNavigation from './src/StackNavigation';
+function TheScreen() {
+  return (
+    <View
+      style={{
+        backgroundColor: '#000',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+      }}>
+      <Text
+        style={{
+          fontSize: 16,
+          fontWeight: 'bold',
+          color: 'red',
+          alignSelf: 'center',
+        }}>
+        The Screen
+      </Text>
+    </View>
+  );
+}
 const App = () => {
   return (
-    <ImageBackground
-      source={require('./assets/bg_image.jpg')}
-      blurRadius={10}
-      style={[
-        styles.bodyStyling,
-        {backgroundColor: '#00000030', borderRadius: 20},
-      ]}>
-      <Header />
-      <Text>Hello World! This is from App js</Text>
-      <TheModels />
-    </ImageBackground>
+    <>
+      {/* <ImageBackground
+        source={require('./assets/bg_image.jpg')}
+        blurRadius={10}
+        style={[
+          styles.bodyStyling,
+          {backgroundColor: '#00000030', borderRadius: 20},
+        ]}>
+        <Header />
+      </ImageBackground> */}
+      <View>
+        <Text>This is App.js file</Text>
+      </View>
+      <StackNavigation />
+    </>
   );
 };
 
