@@ -1,11 +1,19 @@
 import React from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+// import {TouchableOpacity} from 'react-native-gesture-handler';
+import MyButton from '../components/MyButton';
 
-const Signup = props => {
+const Signup = ({navigation}) => {
   const goback = () => {
-    // navigation.navigate('Screen_A');
-    props.navigation.goBack();
+    // navigation.navigate('Home');
+    navigation.goBack();
   };
   return (
     <View style={styles.theView}>
@@ -46,11 +54,18 @@ const Signup = props => {
         placeholder="Repeat Password"
         // keyboardType="visible-password"
       />
-      <TouchableOpacity onPress={goback}>
-        <Text style={{backgroundColor: '#000000', color: 'yellow'}}>
-          Go back
-        </Text>
-      </TouchableOpacity>
+      {/* <TouchableOpacity
+        onPress={goback}
+        style={{
+          backgroundColor: '#000000',
+          width: 100,
+          height: 30,
+          padding: 5,
+          margin: 5,
+        }}>
+        <Text style={{color: 'yellow', textAlign: 'center'}}>Go back</Text>
+      </TouchableOpacity> */}
+      <MyButton title={'Go to Home'} onClickHandler={goback} />
     </View>
   );
 };
