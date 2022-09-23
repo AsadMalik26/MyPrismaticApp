@@ -65,7 +65,8 @@ const Signup = ({navigation}) => {
         }}>
         <Text style={{color: 'yellow', textAlign: 'center'}}>Go back</Text>
       </TouchableOpacity> */}
-      <MyButton title={'Go to Home'} onClickHandler={goback} />
+      <MyButton title={'Sign up'} />
+      {/* <MyButton title={'Go to Home'} onClickHandler={goback} /> */}
     </View>
   );
 };

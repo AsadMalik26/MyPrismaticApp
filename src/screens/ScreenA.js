@@ -16,7 +16,7 @@ const ScreenA = ({navigation}) => {
     <View style={styles.view}>
       <Header />
       <Text style={styles.text}>Screen A</Text>
-      <Text style={styles.text}>Header option disabled for this page</Text>
+      {/* <Text style={styles.text}>Header option disabled for this page</Text> */}
       <MyButton title={'Go to Screen B'} onClickHandler={navigateToB} />
       <MyButton title={'Sign Up here'} onClickHandler={navigateToSignup} />
     </View>

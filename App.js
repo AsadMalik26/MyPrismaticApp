@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import StackNavigation from './src/StackNavigation';
-import TabNavigation from './src/TabNavigation';
+// import MaterialTabNavigation from './src/MaterialTabNavigation';
+import MaterialTopTabNavigation from './src/MaterialTopTabNavigation';
+
 function TheScreen() {
   return (
     <View
@@ -35,11 +36,8 @@ const App = () => {
         ]}>
         <Header />
       </ImageBackground> */}
-      <View>
-        <Text>This is App.js file</Text>
-      </View>
-      {/* <StackNavigation /> */}
-      <TabNavigation />
+      {/* <MaterialTabNavigation /> */}
+      <MaterialTopTabNavigation />
     </>
   );
 };
