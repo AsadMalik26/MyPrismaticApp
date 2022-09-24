@@ -11,7 +11,9 @@ const ScreenA = ({navigation}) => {
   const navigateToSignup = () => {
     navigation.navigate('Signup');
   };
-
+  const toggledrawer = () => {
+    navigation.toggleDrawer();
+  };
   return (
     <View style={styles.view}>
       <Header />
@@ -19,6 +21,7 @@ const ScreenA = ({navigation}) => {
       {/* <Text style={styles.text}>Header option disabled for this page</Text> */}
       <MyButton title={'Go to Screen B'} onClickHandler={navigateToB} />
       <MyButton title={'Sign Up here'} onClickHandler={navigateToSignup} />
+      <MyButton title={'toggle drawer'} onClickHandler={toggledrawer} />
     </View>
   );
 };

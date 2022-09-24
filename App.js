@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import DrawerNavigation from './src/DrawerNavigation';
 // import MaterialTabNavigation from './src/MaterialTabNavigation';
 import MaterialTopTabNavigation from './src/MaterialTopTabNavigation';
 
@@ -36,8 +37,7 @@ const App = () => {
         ]}>
         <Header />
       </ImageBackground> */}
-      {/* <MaterialTabNavigation /> */}
-      <MaterialTopTabNavigation />
+      <DrawerNavigation />
     </>
   );
 };

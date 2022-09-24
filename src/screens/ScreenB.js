@@ -3,8 +3,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import MyButton from '../components/MyButton';
 const ScreenB = ({navigation}) => {
   const navigateToA = () => {
-    // navigation.navigate('Screen_A');
-    navigation.goBack();
+    navigation.navigate('Home');
+    // navigation.goBack();
   };
   return (
     <View
