@@ -5,7 +5,10 @@ import MyButton from '../components/MyButton';
 
 const ScreenA = ({navigation}) => {
   const navigateToB = () => {
-    navigation.navigate('Screen_B');
+    navigation.navigate('Screen_B', {
+      itemName: 'Item From Screen A',
+      itemId: 14,
+    });
     // navigation.replace('Screen_B');
   };
   const navigateToSignup = () => {

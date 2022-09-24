@@ -64,6 +64,10 @@ const DrawerNavigation = () => {
               />
             ),
           }}
+          initialParams={{
+            itemName: 'Item From Drawer',
+            itemId: 14,
+          }}
         />
         <Drawer.Screen
           name="Signup"
