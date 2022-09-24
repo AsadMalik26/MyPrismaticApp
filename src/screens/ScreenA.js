@@ -39,8 +39,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
+    fontFamily: 'DancingScript-VariableFont_wght',
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: 'red',
     alignSelf: 'center',
   },

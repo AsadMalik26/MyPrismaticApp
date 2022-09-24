@@ -1,5 +1,6 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
+import GlobalStyles from '../GlobalStyles';
 
 const MyButton = ({
   onClickHandler = () => {
@@ -16,7 +17,7 @@ const MyButton = ({
       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
       android_ripple={{color: '#C6EBC5', foreground: '#367E18'}}
       onPress={onClickHandler}>
-      <Text>{title}</Text>
+      <Text style={GlobalStyles.font}>{title}</Text>
     </Pressable>
   );
 };
