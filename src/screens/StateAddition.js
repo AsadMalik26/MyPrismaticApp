@@ -1,5 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
+import GlobalStyles from '../GlobalStyles';
 
 const StateAddition = () => {
   const [sum, setSum] = useState(0);
@@ -11,12 +12,12 @@ const StateAddition = () => {
   };
   return (
     <View style={styles.bodyState}>
-      <Text style={styles.text}>{sum}</Text>
+      <Text style={GlobalStyles.text}>{sum}</Text>
 
       <TouchableOpacity style={styles.buttonStyle} onPress={onClickHandler}>
-        <Text>Add</Text>
+        <Text style={GlobalStyles.text}>Add</Text>
       </TouchableOpacity>
-      <Text>You clicked {count} times</Text>
+      <Text style={GlobalStyles.text}>You clicked {count} times</Text>
     </View>
   );
 };

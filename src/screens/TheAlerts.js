@@ -5,9 +5,9 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
+import GlobalStyles from '../GlobalStyles';
 
 const TheAlerts = () => {
   const [name, setName] = useState('');
@@ -39,11 +39,13 @@ const TheAlerts = () => {
   };
   return (
     <View style={styles.bodyStyling}>
-      <Text style={styles.text}>Hello Input! This is from The Alerts</Text>
+      <Text style={GlobalStyles.text}>
+        Hello Input! This is from The Alerts
+      </Text>
 
-      <Text style={styles.text}>What's Your name?</Text>
+      <Text style={GlobalStyles.text}>What's Your name?</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input]}
         placeholder="e.g. Asad"
         maxLength={20}
         keyboardType="default"
@@ -63,7 +65,7 @@ const TheAlerts = () => {
         onPress={onClickHandler}>
         <Text>{show ? 'Clear' : 'Submit'}</Text>
       </Pressable>
-      <Text style={styles.text}>
+      <Text style={GlobalStyles.text}>
         {show ? `Welcome ${name} to React Native` : ``}
       </Text>
     </View>

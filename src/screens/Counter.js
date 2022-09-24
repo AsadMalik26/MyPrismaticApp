@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import GlobalStyles from '../GlobalStyles';
 import CustomComponent from './CustomComponent';
 import StateAddition from './StateAddition';
 import StateManagement from './StateManagement';
@@ -7,7 +8,9 @@ import StateManagement from './StateManagement';
 const Counter = () => {
   return (
     <View>
-      <Text>Hello World! This is from Counter js</Text>
+      <Text style={GlobalStyles.text}>
+        Hello World! This is from Counter js
+      </Text>
       <StateManagement />
       <Text>Counter</Text>
       <StateAddition />

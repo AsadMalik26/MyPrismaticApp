@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
+import GlobalStyles from '../GlobalStyles';
 
 const StateManagement = () => {
   const [name, setName] = useState('Asad');
@@ -9,12 +10,12 @@ const StateManagement = () => {
   return (
     <>
       <View style={styles.bodyState}>
-        <Text style={styles.text}>{name}</Text>
+        <Text style={GlobalStyles.text}>{name}</Text>
 
         <TouchableOpacity style={styles.buttonStyle} onPress={onClickHandler}>
-          <Text>Update state</Text>
+          <Text style={GlobalStyles.text}>Update state</Text>
         </TouchableOpacity>
-        <Text>Hello world</Text>
+        <Text style={GlobalStyles.text}>Hello world</Text>
       </View>
     </>
   );

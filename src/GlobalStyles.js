@@ -8,4 +8,10 @@ export default StyleSheet.create({
     // fontFamily: 'JosefinSans-Italic-VariableFont_wght',
     // fontFamily: 'AbyssinicaSIL-Regular',
   },
+  text: {
+    fontSize: 16,
+    // fontWeight: 'bold',
+    color: '#000',
+    alignSelf: 'center',
+  },
 });

@@ -1,5 +1,6 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import GlobalStyles from '../GlobalStyles';
 
 const FlatListComponent = () => {
   const data = [
@@ -18,7 +19,12 @@ const FlatListComponent = () => {
   ];
 
   const renderItem = ({item, index}) => {
-    <Text style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+    <Text
+      style={[
+        GlobalStyles.text,
+        {justifyContent: 'center', alignItems: 'center', flex: 1},
+      ]}
+      key={index}>
       {item}
     </Text>;
   };

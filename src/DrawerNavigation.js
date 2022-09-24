@@ -8,6 +8,12 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ScreenA from './screens/ScreenA';
 import Signup from './screens/Signup';
 import ScreenB from './screens/ScreenB';
+import Counter from './screens/Counter';
+import FlatListComponent from './screens/FlatListComponent';
+import List from './screens/List';
+import TheAlerts from './screens/TheAlerts';
+import Login from './screens/Login';
+import LoggedIn from './screens/LoggedIn';
 
 const Drawer = createDrawerNavigator();
 
@@ -82,6 +88,12 @@ const DrawerNavigation = () => {
             ),
           }}
         />
+        <Drawer.Screen name="Counter" component={Counter} />
+        <Drawer.Screen name="FlatListComponent" component={FlatListComponent} />
+        <Drawer.Screen name="List" component={List} />
+        <Drawer.Screen name="TheAlerts" component={TheAlerts} />
+        <Drawer.Screen name="Login" component={Login} />
+        <Drawer.Screen name="LoggedIn" component={LoggedIn} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
