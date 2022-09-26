@@ -14,6 +14,7 @@ import List from './screens/List';
 import TheAlerts from './screens/TheAlerts';
 import Login from './screens/Login';
 import LoggedIn from './screens/LoggedIn';
+import TheFlatList from './screens/TheFlatList';
 
 const Drawer = createDrawerNavigator();
 
@@ -89,7 +90,7 @@ const DrawerNavigation = () => {
           }}
         />
         <Drawer.Screen name="Counter" component={Counter} />
-        <Drawer.Screen name="FlatListComponent" component={FlatListComponent} />
+        <Drawer.Screen name="TheFlatList" component={TheFlatList} />
         <Drawer.Screen name="List" component={List} />
         <Drawer.Screen name="TheAlerts" component={TheAlerts} />
         <Drawer.Screen name="Login" component={Login} />

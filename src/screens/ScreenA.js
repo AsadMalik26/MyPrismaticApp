@@ -19,8 +19,9 @@ const ScreenA = ({navigation}) => {
     navigation.toggleDrawer();
   };
   const [name, setName] = useState('');
-  const getUser = async () => {
-    await AsyncStorage.getItem('Username').then(value => {
+  const getUser = () => {
+    console.log('Screen A - Get effect called');
+    AsyncStorage.getItem('Username').then(value => {
       if (value != null) {
         console.log('User present: ', value);
         setName(value);

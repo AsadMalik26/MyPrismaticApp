@@ -8,7 +8,7 @@ import MyButton from '../components/MyButton';
 const LoggedIn = ({navigation}) => {
   const [name, setName] = useState('');
   const getUser = () => {
-    console.log('Get effect called');
+    console.log('Logged in - Get effect called');
     AsyncStorage.getItem('Username').then(value => {
       if (value != null) {
         console.log('User present: ', value);
@@ -18,16 +18,28 @@ const LoggedIn = ({navigation}) => {
   };
   useEffect(getUser, []);
 
-  const update = async () => {
+  const update = () => {
     if (name.length == 0) {
       Alert.alert('Warning', 'Name must not be empty');
     } else {
       try {
-        await AsyncStorage.setItem('Username', name);
+        AsyncStorage.setItem('Username', name);
         Alert.alert('Updated', `Name updated: ${name}`);
       } catch (error) {
         console.log('Error occured while update');
       }
+    }
+  };
+  const logout = () => {
+    try {
+      AsyncStorage.removeItem('Username', res => {
+        console.log('Removed? or removed error?', res);
+      });
+      navigation.navigate('Login');
+    } catch (error) {
+      console.log('============>Logout Error');
+      // pop to route view constroller in react native
+      // what about in tab navigation?
     }
   };
   return (
@@ -43,6 +55,7 @@ const LoggedIn = ({navigation}) => {
       />
       {/* <Text style={styles.text}>Header option disabled for this page</Text> */}
       <MyButton title={'Update'} onClickHandler={update} />
+      <MyButton title={'Logout User'} onClickHandler={logout} />
     </View>
   );
 };
