@@ -7,12 +7,17 @@ import MyButton from '../components/MyButton';
 
 const LoggedIn = ({navigation}) => {
   const [name, setName] = useState('');
+  const [age, setAge] = useState(0);
+
   const getUser = () => {
     console.log('Logged in - Get effect called');
-    AsyncStorage.getItem('Username').then(value => {
+    AsyncStorage.getItem('UserData').then(value => {
+      console.log('Logged-in Value found: ', value);
       if (value != null) {
-        console.log('User present: ', value);
-        setName(value);
+        let user = JSON.parse(value);
+        console.log('User present: ', user.name, user.age);
+        setName(user.name);
+        setAge(user.age);
       }
     });
   };
@@ -23,8 +28,11 @@ const LoggedIn = ({navigation}) => {
       Alert.alert('Warning', 'Name must not be empty');
     } else {
       try {
-        AsyncStorage.setItem('Username', name);
-        Alert.alert('Updated', `Name updated: ${name}`);
+        let user = {
+          name: name,
+        };
+        AsyncStorage.mergeItem('UserData', JSON.stringify(user));
+        Alert.alert('Updated', `Updated: ${user}`);
       } catch (error) {
         console.log('Error occured while update');
       }
@@ -32,7 +40,7 @@ const LoggedIn = ({navigation}) => {
   };
   const logout = () => {
     try {
-      AsyncStorage.removeItem('Username', res => {
+      AsyncStorage.removeItem('UserData', res => {
         console.log('Removed? or removed error?', res);
       });
       navigation.navigate('Login');
@@ -47,6 +55,7 @@ const LoggedIn = ({navigation}) => {
       <Header />
       <Text style={styles.text}>Logged In Screen</Text>
       <Text style={styles.text}>{name ? `Welcom ${name}` : ''}</Text>
+      <Text style={styles.text}>{age ? `Your age is ${age}` : ''}</Text>
       <TextInput
         placeholder="Update here"
         style={styles.theInput}

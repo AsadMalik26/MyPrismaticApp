@@ -5,9 +5,10 @@ import MyButton from '../components/MyButton';
 
 const Login = ({navigation}) => {
   const [name, setName] = useState('');
+  const [age, setAge] = useState(0);
   const login = async () => {
-    if (name.length < 1) {
-      Alert.alert('Alert', 'Name length should be greater than 3333333', [
+    if (name.length < 3) {
+      Alert.alert('Alert', 'Name should at least 4 character long', [
         {
           text: 'Ok',
           onPress: () => console.warn('Ok pressed'),
@@ -16,7 +17,11 @@ const Login = ({navigation}) => {
       return;
     } else {
       try {
-        await AsyncStorage.setItem('Username', name);
+        let user = {
+          name: name,
+          age: age,
+        };
+        await AsyncStorage.setItem('UserData', JSON.stringify(user));
         navigation.navigate('Home');
       } catch (error) {
         console.log('Error occured while login=============>', error);
@@ -26,10 +31,10 @@ const Login = ({navigation}) => {
 
   const getUser = () => {
     console.log('Log in - Get effect called');
-    AsyncStorage.getItem('Username').then(value => {
+    AsyncStorage.getItem('UserData').then(value => {
       if (value != null) {
-        console.log('User present: ', value);
-        // setName(value);
+        let user = JSON.parse(value);
+        console.log('User present: ', user.name, user.age);
         navigation.navigate('LoggedIn');
       }
     });
@@ -47,6 +52,14 @@ const Login = ({navigation}) => {
           style={styles.theInput}
           placeholder="First Name"
           onChangeText={value => setName(value)}
+        />
+        <TextInput
+          placeholderTextColor={'#181818'}
+          style={styles.theInput}
+          placeholder="age"
+          // secureTextEntry={true}
+          keyboardType="numeric"
+          onChangeText={value => setAge(value)}
         />
         <MyButton title={'Login'} onClickHandler={login} />
       </View>

@@ -21,10 +21,11 @@ const ScreenA = ({navigation}) => {
   const [name, setName] = useState('');
   const getUser = () => {
     console.log('Screen A - Get effect called');
-    AsyncStorage.getItem('Username').then(value => {
+    AsyncStorage.getItem('UserData').then(value => {
       if (value != null) {
-        console.log('User present: ', value);
-        setName(value);
+        let user = JSON.parse(value);
+        console.log('User present: ', user.name, user.age);
+        setName(user.name);
       }
     });
   };
