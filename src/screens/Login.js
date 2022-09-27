@@ -22,7 +22,7 @@ const Login = ({navigation}) => {
           age: age,
         };
         await AsyncStorage.setItem('UserData', JSON.stringify(user));
-        navigation.navigate('Home');
+        navigation.navigate('LoggedIn');
       } catch (error) {
         console.log('Error occured while login=============>', error);
       }

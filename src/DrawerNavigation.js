@@ -15,6 +15,8 @@ import TheAlerts from './screens/TheAlerts';
 import Login from './screens/Login';
 import LoggedIn from './screens/LoggedIn';
 import TheFlatList from './screens/TheFlatList';
+import DbTest from './db-learning/DbTest';
+import Task1 from './cui-screens/Task1';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,7 +24,7 @@ const DrawerNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Home"
+        initialRouteName="Task1"
         drawerPosition="left"
         // hideStatusBar={true}
         edgeWidth={100}
@@ -95,6 +97,7 @@ const DrawerNavigation = () => {
         <Drawer.Screen name="TheAlerts" component={TheAlerts} />
         <Drawer.Screen name="Login" component={Login} />
         <Drawer.Screen name="LoggedIn" component={LoggedIn} />
+        <Drawer.Screen name="Task1" component={Task1} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
