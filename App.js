@@ -2,29 +2,13 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import DrawerNavigation from './src/DrawerNavigation';
 // import MaterialTabNavigation from './src/MaterialTabNavigation';
-import MaterialTopTabNavigation from './src/MaterialTopTabNavigation';
+// import MaterialTopTabNavigation from './src/MaterialTopTabNavigation';
+import {Provider} from 'react-redux';
+// import {store} from './src/redux/store';
+import configureStore from './src/redux/store';
 
-function TheScreen() {
-  return (
-    <View
-      style={{
-        backgroundColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-      }}>
-      <Text
-        style={{
-          fontSize: 16,
-          fontWeight: 'bold',
-          color: 'red',
-          alignSelf: 'center',
-        }}>
-        The Screen
-      </Text>
-    </View>
-  );
-}
+const store = configureStore;
+
 const App = () => {
   return (
     <>
@@ -37,7 +21,9 @@ const App = () => {
         ]}>
         <Header />
       </ImageBackground> */}
-      <DrawerNavigation />
+      <Provider store={store}>
+        <DrawerNavigation />
+      </Provider>
     </>
   );
 };

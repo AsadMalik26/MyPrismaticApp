@@ -9,14 +9,15 @@ import {
   View,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Card from './Card';
 
-const Task1 = ({navigation}) => {
+const CampusFinderPage = ({navigation}) => {
   const [list, setList] = useState([
-    {
-      key: 1,
-      name: 'Filters',
-    },
+    // {
+    //   key: 1,
+    //   name: 'Filters',
+    // },
     {
       key: 2,
       name: 'Dicipline',
@@ -43,11 +44,28 @@ const Task1 = ({navigation}) => {
     },
   ]);
 
-  const [filters, setfilters] = useState({
-    discipline: 'Computer Science',
-    ranking: 100,
-    city: 'Lahore',
-  });
+  const availableFillters = [
+    {
+      key: 0,
+      title: 'Fillters',
+    },
+    {
+      key: 1,
+      title: 'City',
+    },
+    {
+      key: 2,
+      title: 'Rank',
+    },
+    {
+      key: 3,
+      title: 'Admission',
+    },
+    {
+      key: 4,
+      title: 'Status',
+    },
+  ];
   const [universities, setuniversities] = useState([
     {
       univeristy: 'University of Narowal',
@@ -99,37 +117,39 @@ const Task1 = ({navigation}) => {
       location: 'Lahore',
     },
   ]);
+
   return (
     <SafeAreaView style={styles.body}>
       <View style={styles.header}>
-        <Text style={styles.headingText}>Total Institutions</Text>
+        <Text style={styles.headingText}>
+          Total Institutions: {universities.length}
+        </Text>
       </View>
 
       <FlatList
-        style={styles.listView}
+        style={[styles.flatlist, styles.listView]}
         data={list}
         keyExtractor={(item, index) => index.toString()}
         horizontal={true}
         renderItem={({item}) => (
-          <TouchableOpacity style={styles.listItem}>
+          <TouchableOpacity style={[styles.listItem, styles.list]}>
             <Text style={styles.text}>{item.name}</Text>
           </TouchableOpacity>
         )}
       />
-      {/* <FlatList
-        style={styles.listView}
-        data={filters}
-        keyExtractor={(item, index) => index.toString()}
+
+      <FlatList
+        data={availableFillters}
         horizontal={true}
-        renderItem={item => (
-          console.log(item),
-          (
-            <TouchableOpacity style={styles.listItem}>
-              <Text style={styles}>{item}</Text>
-            </TouchableOpacity>
-          )
+        renderItem={({item}) => (
+          <TouchableOpacity style={[styles.listItem, styles.filters]}>
+            <Text style={styles.text}>{item.title}</Text>
+            <FontAwesome5 name="times-circle" style={styles.cornerIcon} />
+          </TouchableOpacity>
         )}
-      /> */}
+        keyExtractor={item => item.key}
+        style={[styles.flatlist, styles.listView]}
+      />
       <ScrollView>
         {/* cards */}
         {universities.map((uniObj, index) => (
@@ -140,7 +160,7 @@ const Task1 = ({navigation}) => {
   );
 };
 
-export default Task1;
+export default CampusFinderPage;
 
 const styles = StyleSheet.create({
   body: {
@@ -178,5 +198,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'whitesmoke',
     borderRadius: 5,
+  },
+  flatlist: {
+    height: 50,
+    marginVertical: 3,
+  },
+
+  filters: {
+    backgroundColor: '#e6394690',
+    position: 'relative',
+  },
+  list: {
+    backgroundColor: '#8d99ae70',
+  },
+  cornerIcon: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    color: '#000',
   },
 });

@@ -4,40 +4,47 @@ import {Alert, StyleSheet, Text, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Header from '../components/Header';
 import MyButton from '../components/MyButton';
+import {useSelector, useDispatch} from 'react-redux';
+import {setName, setAge, increaseAge, admin} from '../redux/actions'; //the actions we created
 
 const LoggedIn = ({navigation}) => {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState(0);
-
+  const state = useSelector(state => state); //use the states using use selector
+  const dispatch = useDispatch(); //use ddispatch to call the action
+  // console.log('state============', state);
+  // const [name, setName] = useState('');
+  // const [age, setAge] = useState(0);
+  // dispatch(admin('faisal'));
   const getUser = () => {
     console.log('Logged in - Get effect called');
-    AsyncStorage.getItem('UserData').then(value => {
-      console.log('Logged-in Value found: ', value);
-      if (value != null) {
-        let user = JSON.parse(value);
-        console.log('User present: ', user.name, user.age);
-        setName(user.name);
-        setAge(user.age);
-      }
-    });
+    // AsyncStorage.getItem('UserData').then(value => {
+    //   console.log('Logged-in Value found: ', value);
+    //   if (value != null) {
+    //     let user = JSON.parse(value);
+    //     console.log('User present: ', user.name, user.age);
+    //     setName(user.name);
+    //     setAge(user.age);
+    //   }
+    // });
+    // dispatch(setName(name));
+    //dispatch(setAge(age));
   };
   useEffect(getUser, []);
 
-  const update = () => {
-    if (name.length == 0) {
-      Alert.alert('Warning', 'Name must not be empty');
-    } else {
-      try {
-        let user = {
-          name: name,
-        };
-        AsyncStorage.mergeItem('UserData', JSON.stringify(user));
-        Alert.alert('Updated', `Updated: ${user}`);
-      } catch (error) {
-        console.log('Error occured while update');
-      }
-    }
-  };
+  // const update = () => {
+  //   if (name.length == 0) {
+  //     Alert.alert('Warning', 'Name must not be empty');
+  //   } else {
+  //     try {
+  //       let user = {
+  //         name: name,
+  //       };
+  //       AsyncStorage.mergeItem('UserData', JSON.stringify(user));
+  //       Alert.alert('Updated', `Updated: ${user}`);
+  //     } catch (error) {
+  //       console.log('Error occured while update');
+  //     }
+  //   }
+  // };
   const logout = () => {
     try {
       AsyncStorage.removeItem('UserData', res => {
@@ -54,16 +61,23 @@ const LoggedIn = ({navigation}) => {
     <View style={styles.view}>
       <Header />
       <Text style={styles.text}>Logged In Screen</Text>
-      <Text style={styles.text}>{name ? `Welcom ${name}` : ''}</Text>
-      <Text style={styles.text}>{age ? `Your age is ${age}` : ''}</Text>
+      {/* <Text style={styles.text}>{name ? `Welcom ${name}` : ''}</Text>
+      <Text style={styles.text}>{age ? `Your age is ${age}` : ''}</Text> */}
+      {/* <Text style={styles.text}>Welcome {name}</Text> */}
+      {/* <Text style={styles.text}>Your age is {age}</Text> */}
       <TextInput
         placeholder="Update here"
         style={styles.theInput}
-        value={name}
-        onChangeText={value => setName(value)}
+        // value={name}
+        onChangeText={value => dispatch(setName(value))}
       />
       {/* <Text style={styles.text}>Header option disabled for this page</Text> */}
-      <MyButton title={'Update'} onClickHandler={update} />
+      {/* <MyButton title={'Update'} onClickHandler={update} /> */}
+      <MyButton
+        title={'Increase Age'}
+        onClickHandler={() => dispatch(increaseAge())}
+      />
+      <MyButton title={'Admin'} onClickHandler={() => dispatch(admin('Ali'))} />
       <MyButton title={'Logout User'} onClickHandler={logout} />
     </View>
   );
