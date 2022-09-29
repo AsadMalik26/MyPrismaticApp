@@ -15,6 +15,7 @@ export const setAge = age => dispatch => {
     payload: age,
   });
 };
+
 export const increaseAge = age => dispatch => {
   dispatch({
     type: INCREASE_AGE,
@@ -22,7 +23,7 @@ export const increaseAge = age => dispatch => {
   });
 };
 
-export const admin = name => {
+export const setAdmin = name => {
   return {
     type: SET_ADMIN_NAME,
     payload: name,

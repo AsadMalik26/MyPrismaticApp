@@ -10,7 +10,7 @@ const initialState = {
   age: 0,
 };
 const initialAdmin = {
-  name: 'asad',
+  name: 'Asad',
   age: 0,
 };
 

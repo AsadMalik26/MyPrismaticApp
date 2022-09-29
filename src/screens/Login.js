@@ -2,15 +2,10 @@ import {Alert, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MyButton from '../components/MyButton';
-import {useSelector, useDispatch} from 'react-redux';
-import {setName, setAge} from '../redux/actions'; //the actions we created
 
 const Login = ({navigation}) => {
-  const {name, age} = useSelector(state => state.userReducer); //use the states using use selector
-  const dispatch = useDispatch(); //use ddispatch to call the action
-
-  // const [name, setName] = useState('');
-  // const [age, setAge] = useState(0);
+  const [name, setName] = useState('');
+  const [age, setAge] = useState(0);
 
   const login = async () => {
     if (name.length < 3) {
@@ -23,13 +18,13 @@ const Login = ({navigation}) => {
       return;
     } else {
       try {
-        dispatch(setName(name));
-        dispatch(setAge(age));
+        // dispatch(setName(name));
+        // dispatch(setAge(age));
         let user = {
           name: name,
           age: age,
         };
-        // await AsyncStorage.setItem('UserData', JSON.stringify(user));
+        await AsyncStorage.setItem('UserData', JSON.stringify(user));
         navigation.navigate('LoggedIn');
       } catch (error) {
         console.log('Error occured while login=============>', error);
@@ -59,7 +54,7 @@ const Login = ({navigation}) => {
           placeholderTextColor={'#181818'}
           style={styles.theInput}
           placeholder="First Name"
-          onChangeText={value => dispatch(setName(value))}
+          onChangeText={value => setName(value)}
         />
         <TextInput
           placeholderTextColor={'#181818'}
@@ -67,7 +62,7 @@ const Login = ({navigation}) => {
           placeholder="age"
           // secureTextEntry={true}
           keyboardType="numeric"
-          onChangeText={value => dispatch(setAge(value))}
+          onChangeText={value => setAge(value)}
         />
         <MyButton title={'Login'} onClickHandler={login} />
       </View>

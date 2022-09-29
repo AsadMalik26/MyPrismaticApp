@@ -7,12 +7,14 @@ const MyButton = ({
     console.log('default - I am null presseable');
   },
   title,
+  styleOptions = {},
 }) => {
   return (
     <Pressable
       style={({pressed}) => [
         {backgroundColor: pressed ? '#87A2FB' : '#6F38C5'},
         styles.buttonStyle,
+        {...styleOptions},
       ]}
       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
       android_ripple={{color: '#C6EBC5', foreground: '#367E18'}}

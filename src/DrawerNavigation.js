@@ -19,6 +19,10 @@ import TheFlatList from './screens/TheFlatList';
 // import Task1 from './cui-screens/Task1';
 import CampusFinderPage from './cui-screens/CampusFinderPage';
 import APIFetch from './cui-screens/APIFetch';
+import ValueSetter from './redux/screens/ValueSetter';
+import ReadMain1 from './redux/screens/ReadMain1';
+import ReadInner2 from './redux/screens/ReadInner2';
+import ReadInner3 from './redux/screens/ReadInner3';
 
 const Drawer = createDrawerNavigator();
 
@@ -26,7 +30,7 @@ const DrawerNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="CampusFinder"
+        initialRouteName="Value Setter Redux"
         drawerPosition="left"
         // hideStatusBar={true}
         edgeWidth={50}
@@ -101,6 +105,22 @@ const DrawerNavigation = () => {
         <Drawer.Screen name="LoggedIn" component={LoggedIn} />
         <Drawer.Screen name="CampusFinder" component={CampusFinderPage} />
         <Drawer.Screen name="API Fetch" component={APIFetch} />
+        <Drawer.Screen name="Value Setter Redux" component={ValueSetter} />
+        <Drawer.Screen
+          name="ReadMain1"
+          component={ReadMain1}
+          options={{title: 'Read Redux - 1'}}
+        />
+        <Drawer.Screen
+          name="ReadInner2"
+          component={ReadInner2}
+          options={{title: 'Read Inner - 2'}}
+        />
+        <Drawer.Screen
+          name="ReadInner3"
+          component={ReadInner3}
+          options={{title: 'Read Inner - 3'}}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
