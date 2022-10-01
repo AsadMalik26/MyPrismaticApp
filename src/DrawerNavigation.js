@@ -23,6 +23,7 @@ import ValueSetter from './redux/screens/ValueSetter';
 import ReadMain1 from './redux/screens/ReadMain1';
 import ReadInner2 from './redux/screens/ReadInner2';
 import ReadInner3 from './redux/screens/ReadInner3';
+import SQLTesting from './db-learning/SQLTesting';
 
 const Drawer = createDrawerNavigator();
 
@@ -121,6 +122,7 @@ const DrawerNavigation = () => {
           component={ReadInner3}
           options={{title: 'Read Inner - 3'}}
         />
+        <Drawer.Screen name="SQLTesting" component={SQLTesting} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
