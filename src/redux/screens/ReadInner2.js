@@ -1,18 +1,24 @@
-import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux'; //useSelector: to use the reducers for state management
 import MyButton from '../../components/MyButton';
 import GlobalStyles from '../../GlobalStyles';
-import {setName, setAge, increaseAge} from '../actions'; //the actions we created
+import {setName, setAge, increaseAge, getCities} from '../actions'; //the actions we created
 
 const ReadInner2 = ({navigation}) => {
-  const {name, age} = useSelector(state => state.user); //use the states using use selector
+  const {name, age, cities} = useSelector(state => state.user); //use the states using use selector
   const dispatch = useDispatch(); //use ddispatch to call the action
   const admin = useSelector(state => state.admin); //use the states using use selector
   const adminName = admin.name;
   // console.log('Login------state==============> ', state);
   //   console.log('Login------name==============> ', name);
   //   console.log('Login------age==============> ', age);
+
+  useEffect(() => {
+    dispatch(getCities());
+  }, []);
+  console.log('cities============> ', cities);
+
   return (
     <View style={{flex: 1}}>
       <View
@@ -42,10 +48,38 @@ const ReadInner2 = ({navigation}) => {
             </Text>
           </View>
         </View>
+        <View class={'content'} style={[{borderWidth: 1, width: '70%'}]}>
+          <View>
+            <Text style={[GlobalStyles.text, styles.text, GlobalStyles.font]}>
+              Redux API Action
+            </Text>
+            <FlatList
+              data={cities}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({item}) => (
+                <View style={{backgroundColor: 'whitesmoke', margin: 5}}>
+                  <Text
+                    style={[
+                      GlobalStyles.text,
+                      styles.headingText,
+                      GlobalStyles.font,
+                    ]}>
+                    {item.name}
+                  </Text>
+                  <Text
+                    style={[GlobalStyles.text, styles.text, GlobalStyles.font]}>
+                    {item.city}
+                  </Text>
+                </View>
+              )}
+            />
+          </View>
+        </View>
         <View class={'buttons'}>
           <MyButton
-            title={'Go to Next Screen'}
+            title={'Fetch Data from API'}
             styleOptions={{minWidth: 150, fontSize: 20, color: '#f0f'}}
+            onClickHandler={() => dispatch(getCities())}
           />
         </View>
       </View>

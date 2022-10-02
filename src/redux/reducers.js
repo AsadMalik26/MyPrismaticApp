@@ -3,11 +3,13 @@ import {
   SET_USER_AGE,
   INCREASE_AGE,
   SET_ADMIN_NAME,
+  GET_CITIES,
 } from './actions';
 
 const initialState = {
-  name: 'asad',
+  name: '',
   age: 0,
+  cities: [],
 };
 const initialAdmin = {
   name: 'Asad',
@@ -24,6 +26,8 @@ export const userReducer = (state = initialState, action) => {
       console.log('state============>', state);
       console.log('action============>', action);
       return {...state, age: state.age + 1};
+    case GET_CITIES:
+      return {...state, cities: action.payload};
     default:
       return state;
   }
