@@ -1,17 +1,9 @@
 import React, {useEffect} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux'; //useSelector: to use the reducers for state management
 import MyButton from '../../components/MyButton';
 import GlobalStyles from '../../GlobalStyles';
 import {setName, setAge, increaseAge, getCities} from '../actions'; //the actions we created
-import PushNotification from 'react-native-push-notification';
 
 const ReadInner2 = ({navigation}) => {
   const {name, age, cities} = useSelector(state => state.user); //use the states using use selector
@@ -22,26 +14,8 @@ const ReadInner2 = ({navigation}) => {
   //   console.log('Login------name==============> ', name);
   //   console.log('Login------age==============> ', age);
 
-  const createChannels = () => {
-    PushNotification.createChannel({
-      channelId: 'test-channel', // (required)
-      channelName: 'Asad Test Channel', // (required)
-    });
-  };
-  const handleNotifications = (item, index) => {
-    console.log('handling notifications');
-    // PushNotification.cancelAllLocalNotifications();
-    // PushNotification.cancelLocalNotifications({id: index});
-
-    PushNotification.localNotification({
-      channelId: 'test-channel',
-      title: 'You clicked on ' + item.name,
-      message: 'City ' + item.city,
-    });
-  };
   useEffect(() => {
     dispatch(getCities());
-    createChannels();
   }, []);
   console.log('cities============> ', cities);
 
@@ -82,28 +56,21 @@ const ReadInner2 = ({navigation}) => {
             <FlatList
               data={cities}
               keyExtractor={(item, index) => index.toString()}
-              renderItem={({item, index}) => (
-                <TouchableOpacity
-                  onPress={() => handleNotifications(item, index)}>
-                  <View style={{backgroundColor: 'whitesmoke', margin: 5}}>
-                    <Text
-                      style={[
-                        GlobalStyles.text,
-                        styles.headingText,
-                        GlobalStyles.font,
-                      ]}>
-                      {item.name}
-                    </Text>
-                    <Text
-                      style={[
-                        GlobalStyles.text,
-                        styles.text,
-                        GlobalStyles.font,
-                      ]}>
-                      {item.city}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
+              renderItem={({item}) => (
+                <View style={{backgroundColor: 'whitesmoke', margin: 5}}>
+                  <Text
+                    style={[
+                      GlobalStyles.text,
+                      styles.headingText,
+                      GlobalStyles.font,
+                    ]}>
+                    {item.name}
+                  </Text>
+                  <Text
+                    style={[GlobalStyles.text, styles.text, GlobalStyles.font]}>
+                    {item.city}
+                  </Text>
+                </View>
               )}
             />
           </View>
