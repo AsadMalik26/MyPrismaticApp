@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import DrawerNavigation from './src/DrawerNavigation';
+import StackNavigation from './src/StackNavigation';
 // import MaterialTabNavigation from './src/MaterialTabNavigation';
 // import MaterialTopTabNavigation from './src/MaterialTopTabNavigation';
 import {Provider} from 'react-redux';
@@ -23,6 +24,7 @@ const App = () => {
       </ImageBackground> */}
       <Provider store={store}>
         <DrawerNavigation />
+        {/* <StackNavigation /> */}
       </Provider>
     </>
   );
