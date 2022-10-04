@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+//asad firebase
+apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
@@ -253,6 +255,10 @@ dependencies {
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    //asad firebase
+implementation platform('com.google.firebase:firebase-bom:30.4.1')
+implementation 'com.google.firebase:firebase-analytics'
+// end asad firebase
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 

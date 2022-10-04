@@ -24,6 +24,7 @@ import ReadMain1 from './redux/screens/ReadMain1';
 import ReadInner2 from './redux/screens/ReadInner2';
 import ReadInner3 from './redux/screens/ReadInner3';
 import SQLTesting from './db-learning/SQLTesting';
+import PushNotifications from './push-notifications/PushNotifications';
 
 const Drawer = createDrawerNavigator();
 
@@ -123,6 +124,7 @@ const DrawerNavigation = () => {
           options={{title: 'Read Inner - 3'}}
         />
         <Drawer.Screen name="SQLTesting" component={SQLTesting} />
+        <Drawer.Screen name="PushNotifications" component={PushNotifications} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
