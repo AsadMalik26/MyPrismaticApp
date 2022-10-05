@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   FlatList,
   Image,
@@ -10,9 +10,11 @@ import {
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MyButton from '../components/MyButton';
 import Card from './Card';
 
 const CampusFinderPage = ({navigation}) => {
+  const [color, setColor] = useState(global.setting.themeColor);
   const [list, setList] = useState([
     // {
     //   key: 1,
@@ -117,10 +119,21 @@ const CampusFinderPage = ({navigation}) => {
       location: 'Lahore',
     },
   ]);
-
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // console.log('1 navigation useEffect is =', global.setting.themeColor);
+      // console.log('Props=======> ', props.navigation);
+      // setSetting(global.setting);
+      // console.log('Global Seting: ======> ', global.setting);
+      setColor(global.setting.themeColor);
+      console.log('Global Seting: ======> ', global.setting);
+    });
+    return unsubscribe;
+  }, [navigation]);
   return (
     <SafeAreaView style={styles.body}>
-      <View style={styles.header}>
+      {console.log('Rendring Campus Finder')}
+      <View style={styles.header(global.setting.themeColor)}>
         <Text style={styles.headingText}>
           Total Institutions: {universities.length}
         </Text>
@@ -153,9 +166,16 @@ const CampusFinderPage = ({navigation}) => {
       <ScrollView>
         {/* cards */}
         {universities.map((uniObj, index) => (
-          <Card uniObj={uniObj} key={index} />
+          <Card uniObj={uniObj} navigation={navigation} key={index} />
         ))}
       </ScrollView>
+
+      <MyButton
+        title={'Settings'}
+        onClickHandler={() => {
+          navigation.navigate('SettingScreen');
+        }}
+      />
     </SafeAreaView>
   );
 };
@@ -172,10 +192,10 @@ const styles = StyleSheet.create({
     margin: 5,
     // backgroundColor: 'yellow',
   },
-  header: {
+  header: (bgColor = '') => ({
     width: '95%',
-    // backgroundColor: 'whitesmoke',
-  },
+    backgroundColor: bgColor,
+  }),
   headingText: {
     color: '#000',
     fontSize: 20,

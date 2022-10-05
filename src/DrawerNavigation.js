@@ -25,6 +25,7 @@ import ReadInner2 from './redux/screens/ReadInner2';
 import ReadInner3 from './redux/screens/ReadInner3';
 import SQLTesting from './db-learning/SQLTesting';
 import PushNotifications from './push-notifications/PushNotifications';
+import SettingScreen from './cui-screens/SettingScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -106,6 +107,7 @@ const DrawerNavigation = () => {
         <Drawer.Screen name="Login" component={Login} />
         <Drawer.Screen name="LoggedIn" component={LoggedIn} />
         <Drawer.Screen name="CampusFinder" component={CampusFinderPage} />
+        <Drawer.Screen name="SettingScreen" component={SettingScreen} />
         <Drawer.Screen name="API Fetch" component={APIFetch} />
         <Drawer.Screen name="Value Setter Redux" component={ValueSetter} />
         <Drawer.Screen
